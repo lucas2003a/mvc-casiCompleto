@@ -47,8 +47,9 @@
                 <th>Edad</th>
                 <th>Raza</th>
                 <th>Tamaño</th>
+                <th>Peso</th>
                 <th>Nacionalidad</th>
-                <th>F.registro</th>
+                <th>F.Inicio</th>
                 <th>Operaciones</th>
               </tr>
           </thead>
@@ -72,47 +73,56 @@
   <div class="modal fade" id="modal-registro-mascotas" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header big primary ">
+        <div class="modal-header big-primary">
           <h5 class="modal-title" id="modalTitleId">Registro de mascotas</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-        <form id="formulario-cursos">
+        <form id="formulario-mascotas">
           <div class="mb-3">
-            <label for="nombrecurso" class="form -label">Nombre curso</label>
-            <input type="text" class="form-control form-control-sm" id="nombrecurso">
+            <label for="nombrmascota" class="form -label">Nombre mascota</label>
+            <input type="text" class="form-control form-control-sm" id="nombremascota">
           </div>
           <div class="mb-3">
-            <label for="especialidad" class="form-label">Especialidad</label>
-            <select id="especialidad" class="form-select form-select-sm">
+            <label for="edad" class="form -label">Edad</label>
+            <input type="text" class="form-control form-control-sm" id="edad">
+          </div>
+          <div class="mb-3">
+            <label for="raza" class="form-label">Raza</label>
+            <select id="raza" class="form-select form-select-sm">
               <option value="">Seleccione</option>
-              <option value="ETI">ETI</option>
-              <option value="Administracion">Administración</option>
-              <option value="Mecanica">Mecánica</option>
+              <option value="leonberguer">Leongerguer</option>
+              <option value="beagle">Beagle</option>
+              <option value="botball">Botball</option>
+              <option value="otterhound">Ottergound</option>
             </select>
+            <div class="mb-3">
+              <label for="tamaño" class="form -label">Tamaño</label>
+              <input type="text" class="form-control form-control-sm" id="tamañpo">
+            </div>
+            <div class="mb-3">
+              <label for="peso" class="form -label">Peso</label>
+              <input type="text" class="form-control form-control-sm" id="peso">
+            </div>
           </div>
           <div class="mb-3">
-            <label for="complejidad" class="form-label">Complejidad</label>
-            <select id="complejidad" class="form-select form-slect-sm">
+            <label for="nacionalidad" class="form-label">Nacionalidad</label>
+            <select id="nacionalidad" class="form-select form-slect-sm">
               <option value="">Seleccione</option>
-              <option value="B">Básico</option>
-              <option value="M">Medio</option>
-              <option value="A">Avanzado</option>
+              <option value="AL">Alemán</option>
+              <option value="EU">Europeo</option>
+              <option value="BRIT">Británico</option>
             </select>
           </div>
           <div class="mb-3">
             <label for="fechainicio" class="form-label">Fecha de inicio</label>
             <input type="date" class="form-control form-control-sm" id="fechainicio">
           </div>
-          <div class="mb-3">
-            <label for="precio" class="form-label">Precio:</label>
-            <input type="text" class="form-control form-control-sm" id="precio">
-          </div>
         </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary btn-sm" id="guardar-curso">Guardar</button>
+          <button type="button" class="btn btn-primary btn-sm" id="guardar-mascota">Guardar</button>
         </div>
       </div>
     </div>
@@ -140,7 +150,7 @@
   <script>
     $(document).ready(function (){
 
-      function mostrarCursos(){
+      function mostrarMascota(){
         $.ajax({
           url: '../controllers/curso.controller.php',
           type: 'POST',
@@ -152,31 +162,32 @@
         });
       }
 
-      function registrarCurso(){
+      function registrarMascota(){
         //Pendiente de validar..
         if(confirm("¿Estás seguro de registrar este nuevo curso?")){
           $.ajax({
-            url: '../controllers/curso.controller.php',
+            url: '../controllers/mascota.controller.php',
             type: 'POST',
             data: {
               operacion     : 'registrar',
-              nombrecurso   : $("#nombrecurso").val(),
-              especialidad  : $("#especialidad").val(),
-              complejidad   : $("#complejidad").val(),
-              fechainicio   : $("#fechainicio").val(),
-              precio        : $("#precio").val()
+              nombremascota : $("#nombremascota").val(),
+              edad          : $("#edad").val(),
+              raza          : $("#raza").val(),
+              tamaño        : $("#tamaño").val(),
+              nacionalidad  : $("#nacionalidad").val(),
+              fechainicio   : $("#fechainicio").val()
             },
             success : function(result){
               if(result == ""){
                 //reiniciar el formulario
-                $("#formulario-cursos")[0].reset();
+                $("#formulario-mascotas")[0].reset();
 
                 //Actualizar la tabla
 
-                mostrarCursos();
+                mostrarMacota();
 
                 //Cerrar el modal
-                $("#modal-registro-cursos").modal('hide');
+                $("#modal-registro-mascotas").modal('hide');
               }
             } 
           })
@@ -184,23 +195,23 @@
       }
 
       //Eventos
-      $("#guardar-curso").click(registrarCurso);
+      $("#guardar-mascota").click(registrarMascota);
 
-      //Al pulsar click sobr el botón Rojo , se elimine el registro
+      //Al pulsar click sobre el botón Rojo , se elimine el registro
       //Detectaremos eventos de los objetos creados de manera asíncrona en.. 
-      $("#tabla-cursos tbody").on("click",".eliminar",function(){
-        const idcursoEliminar = $(this).data("idcurso");
+      $("#tabla-mascotas tbody").on("click",".eliminar",function(){
+        const idmascotaEliminar = $(this).data("idmascota");
         if (confirm("¿Estás seguro de proceder?")){
           $.ajax({
-            url   : '../controllers/curso.controller.php',
+            url   : '../controllers/mascota.controller.php',
             type  : 'POST',
             data  : {
               operacion   : 'eliminar',
-              idcurso     : idcursoEliminar
+              idmascota   : idmascotaEliminar
             },
             success: function(result){
               if (result == ""){
-                mostrarCursos();
+                mostrarMascota();
               }
             }
           });
@@ -209,7 +220,7 @@
 
 
       //Ejecución automática
-      mostrarCursos();
+      mostrarMascota();
 
     });
   </script>
