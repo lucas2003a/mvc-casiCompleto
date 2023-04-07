@@ -1,6 +1,6 @@
 <?
 
-class conexion{
+class Conexion{
 
     private $host = "localhost"; //SERVIDOR
     private $port = "3306";     //PUERTO DE COMUNICACION
