@@ -80,7 +80,7 @@
         <div class="modal-body">
         <form id="formulario-mascotas">
           <div class="mb-3">
-            <label for="nombrmascota" class="form -label">Nombre mascota</label>
+            <label for="nombremascota" class="form -label">Nombre mascota</label>
             <input type="text" class="form-control form-control-sm" id="nombremascota">
           </div>
           <div class="mb-3">
@@ -91,14 +91,14 @@
             <label for="raza" class="form-label">Raza</label>
             <select id="raza" class="form-select form-select-sm">
               <option value="">Seleccione</option>
-              <option value="leonberguer">Leongerguer</option>
+              <option value="leonberguer">Leonberguer</option>
               <option value="beagle">Beagle</option>
               <option value="botball">Botball</option>
-              <option value="otterhound">Ottergound</option>
+              <option value="otterhound">Otterhound</option>
             </select>
             <div class="mb-3">
               <label for="tamaño" class="form -label">Tamaño</label>
-              <input type="text" class="form-control form-control-sm" id="tamañpo">
+              <input type="text" class="form-control form-control-sm" id="tamaño">
             </div>
             <div class="mb-3">
               <label for="peso" class="form -label">Peso</label>
@@ -152,12 +152,12 @@
 
       function mostrarMascota(){
         $.ajax({
-          url: '../controllers/curso.controller.php',
+          url: '../controllers/Mascota.controller.php',
           type: 'POST',
           data: {operacion: 'listar'},
           dataType: 'text',
           success: function(result){
-            $("#tabla-cursos tbody").html(result);
+            $("#tabla-mascotas tbody").html(result);
           }
         });
       }
@@ -166,7 +166,7 @@
         //Pendiente de validar..
         if(confirm("¿Estás seguro de registrar este nuevo curso?")){
           $.ajax({
-            url: '../controllers/mascota.controller.php',
+            url: '../controllers/Mascota.controller.php',
             type: 'POST',
             data: {
               operacion     : 'registrar',
@@ -203,7 +203,7 @@
         const idmascotaEliminar = $(this).data("idmascota");
         if (confirm("¿Estás seguro de proceder?")){
           $.ajax({
-            url   : '../controllers/mascota.controller.php',
+            url   : '../controllers/Mascota.controller.php',
             type  : 'POST',
             data  : {
               operacion   : 'eliminar',

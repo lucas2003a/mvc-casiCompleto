@@ -1,4 +1,4 @@
-<?
+<?php
 
 class Conexion{
 
@@ -28,7 +28,7 @@ class Conexion{
             //Pasar la conexión el atributo/obeto $pdo
             $this->pdo = $this->conectarServidor();
             //control de errores (TRY-CATCH)
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             //RETORNAMOS LA CONEXIÓN AL MDELO QUE LO NECESITE
             return $this->pdo;
