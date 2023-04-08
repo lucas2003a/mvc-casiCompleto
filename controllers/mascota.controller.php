@@ -43,13 +43,13 @@ if(isset($_POST['operacion'])){
         //Paso 1 .-Recoger los datos que nos envía la vista (FORM, utilizando AJAX)
         //$_POST .-Esto es lo que se nos envía desde Form
         $datosForm = [
-            "nombremascota" =>  $_POST['nombremascota'],
+            "nombre"        =>  $_POST['nombre'],
             "edad"          =>  $_POST['edad'],
             "raza"          =>  $_POST['raza'],
             "tamaño"        =>  $_POST['tamaño'],
             "peso"          =>  $_POST['peso'],
             "nacionalidad"  =>  $_POST['nacionalidad'],
-            "fechainicio"   =>  $_POST['fechainicio']
+            "fechaupdate"   =>  $_POST['fechaupdate']
         ];
         //Paso 2 .-Enviar el arreglo como parámetro del método registrar 
         $mascota->registrarMascota($datosForm);

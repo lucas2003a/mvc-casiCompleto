@@ -53,11 +53,11 @@ CREATE PROCEDURE spu_mascotas_registrar
 	IN _peso		DECIMAL(3,2),
 	IN _tamaño		DECIMAL(3,2),
 	IN _nacionalidad	VARCHAR(20),
-	IN _fecharegistro	VARCHAR(20)
+	IN _fechaupdate		VARCHAR(20)
 )
 BEGIN
-	INSERT INTO mascotas(nombre,edad,raza,peso,tamaño,nacionalidad,fecharegistro) VALUES
-		(_nombre,_edad,_raza,_peso,_tamaño,_nacionalidad,_fecharegistro);
+	INSERT INTO mascotas(nombre,edad,raza,peso,tamaño,nacionalidad,fechaupdate) VALUES
+		(_nombre,_edad,_raza,_peso,_tamaño,_nacionalidad,_fechaupdate);
 END $$
 
 CALL spu_mascotas_registrar('Scot','3','Shepadoodle',2.56,0.48,'Amaricano','2022-03-12')

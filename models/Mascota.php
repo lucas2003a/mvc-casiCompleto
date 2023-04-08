@@ -33,17 +33,17 @@ class Mascota extends Conexion{
     public function registrarMascota($datos = []){
         try{
             //1.-Preparamos la consulta
-            $consulta = $this->accesoBD->prepare("CALL spu_mascota_registrar(?,?,?,?,?,?,?)");
+            $consulta = $this->accesoBD->prepare("CALL spu_mascotas_registrar(?,?,?,?,?,?,?)");
             //2.-Ejecutamos la consulta
             $consulta->execute(
                 array(
-                    $datos["nombremascota"],
+                    $datos["nombre"],
                     $datos["edad"],
                     $datos["raza"],
                     $datos["peso"],
                     $datos["tamaño"],
                     $datos["nacionalidad"],
-                    $datos["fecharegistro"]
+                    $datos["fechaupdate"]
                 )
             );
         }
