@@ -43,9 +43,19 @@ class Mascota extends Conexion{
                     $datos["peso"],
                     $datos["tamaño"],
                     $datos["nacionalidad"],
-                    $datos["fechainicio"]
+                    $datos["fecharegistro"]
                 )
             );
+        }
+        catch(Exception $e){
+            die($e->getMessage());
+        }
+    }
+
+    public function eliminarMascota($idmascota = 0){
+        try{
+            $consulta = $this->accesoBD->prepare("CALL spu_mascotas_eliminar(?)");
+            $consulta->execute(array($idmascota));
         }
         catch(Exception $e){
             die($e->getMessage());

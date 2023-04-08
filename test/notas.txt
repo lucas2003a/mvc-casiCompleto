@@ -1,0 +1,2 @@
+revisa y cambia lo que en la base de datos pusiste como fecha update, en el codigo puste como fecha de registro
+guardar datos no funciona, revisalo 

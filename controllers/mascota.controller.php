@@ -21,16 +21,16 @@ if(isset($_POST['operacion'])){
                 echo "
                 <tr>
                     <td>{$numeroFila}</td>
-                    <td>{$mascota['nombremascota']}</td>
+                    <td>{$mascota['nombre']}</td>
                     <td>{$mascota['edad']}</td>
                     <td>{$mascota['raza']}</td>
                     <td>{$mascota['tamaño']}</td>
                     <td>{$mascota['peso']}</td>
                     <td>{$mascota['nacionalidad']}</td>
-                    <td>{$mascota['fechainicio']}</td>
+                    <td>{$mascota['fechaupdate']}</td>
                     <td>
-                        <a href='#' data-idmascota='{$mascota['idmascota']}'class='btn btn-danger btn-sm eliminar'><i class='bi bi-trash3'><i/></a>
-                        <a href='#' data-idmascota='{$mascota['idmascota']}'class='btn btn-info btn-sm editar'><i class='bi bi-pencil'><i/></a>
+                        <a href='#' data-idmascota='{$mascota['idmascota']}'class='btn btn-danger btn-sm eliminar'><i class='bi bi-trash3'></i></a>
+                        <a href='#' data-idmascota='{$mascota['idmascota']}'class='btn btn-info btn-sm editar'><i class='bi bi-pencil'></i></a>
                     </td>
                 </tr>
                 ";

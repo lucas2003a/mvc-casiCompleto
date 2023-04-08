@@ -36,7 +36,7 @@ DELIMITER $$
 	peso,
 	tamaño,
 	nacionalidad,
-	fecharegistro
+	fechaupdate
   FROM mascotas
   WHERE estado ='1'
   ORDER BY idmascota DESC;
