@@ -96,14 +96,14 @@
               <option value="botball">Botball</option>
               <option value="otterhound">Otterhound</option>
             </select>
-            <div class="mb-3">
-              <label for="tamaño" class="form -label">Tamaño</label>
-              <input type="text" class="form-control form-control-sm" id="tamaño">
-            </div>
-            <div class="mb-3">
-              <label for="peso" class="form -label">Peso</label>
-              <input type="text" class="form-control form-control-sm" id="peso">
-            </div>
+          </div>
+          <div class="mb-3">
+            <label for="tamaño" class="form-label">Tamaño</label>
+            <input type="text" class="form-control form-control-sm" id="tamaño">
+          </div>
+          <div class="mb-3">
+            <label for="peso" class="form-label">Peso</label>
+            <input type="text" class="form-control form-control-sm" id="peso">
           </div>
           <div class="mb-3">
             <label for="nacionalidad" class="form-label">Nacionalidad</label>
@@ -132,7 +132,7 @@
   <!-- Optional: Place to the bottom of scripts -->
  
   
-  </script>
+
   <!--fin zona de modales-->
  
   <!-- Bootstrap JavaScript Libraries -->
@@ -164,7 +164,7 @@
 
       function registrarMascota(){
         //Pendiente de validar..
-        if(confirm("¿Estás seguro de registrar este nuevo curso?")){
+        if(confirm("¿Estás seguro de registrar esta nueva mascota?")){
           $.ajax({
             url: '../controllers/Mascota.controller.php',
             type: 'POST',
@@ -175,7 +175,7 @@
               raza          : $("#raza").val(),
               tamaño        : $("#tamaño").val(),
               nacionalidad  : $("#nacionalidad").val(),
-              fechainicio   : $("#fechainicio").val()
+              fechaupdate   : $("#fechainicio").val()
             },
             success : function(result){
               if(result == ""){
@@ -184,7 +184,7 @@
 
                 //Actualizar la tabla
 
-                mostrarMacota();
+                mostrarMascota();
 
                 //Cerrar el modal
                 $("#modal-registro-mascotas").modal('hide');
